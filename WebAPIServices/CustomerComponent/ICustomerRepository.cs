@@ -6,7 +6,7 @@ using WebAPIServices.Dto;
 
 namespace WebAPIServices.CustomerComponent
 {
-    interface ICustomerRepository
+    public interface ICustomerRepository
     {
         CustomerDto FindCustomerById(int id);
         IEnumerable<CustomerDto> GetAllCustomer();

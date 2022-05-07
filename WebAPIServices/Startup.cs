@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebAPIServices.AccountComponent;
 using WebAPIServices.CustomerComponent;
+using WebAPIServices.TransactionComponent;
 
 namespace WebAPIServices
 {
@@ -39,9 +40,9 @@ namespace WebAPIServices
             services.AddSingleton(mapper);
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddScoped<CustomerService>();
             services.AddScoped<AccountService>();
-            //services.AddScoped<TransactionService>();
+            services.AddScoped<CustomerService>();
+            services.AddScoped<TransactionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

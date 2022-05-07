@@ -43,5 +43,19 @@ namespace WebAPIServices.Controllers
             var allAcct = _service.GetAllAccount();
             return Ok(allAcct);
         }
+
+
+        [HttpGet("{id}")]
+        public IActionResult GetAccountByID(int id)
+        {
+            var foundAccountDto = _service.FindByCustomerID(id);
+            if(foundAccountDto != null)
+            {
+                return Ok(foundAccountDto);
+            }
+
+            return StatusCode(500, foundAccountDto);
+
+        }
     }
 }

@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebAPIServices.CustomerComponent;
+using WebAPIServices.DomainModel;
 using WebAPIServices.Dto;
+using WebAPIServices.TransactionComponent;
 
 namespace WebAPIServices.AccountComponent
 {
@@ -12,12 +14,13 @@ namespace WebAPIServices.AccountComponent
     {
         private ResponseDto _reponse;
         private CustomerService _customerService;
-        //private TransactionService _transactionService;
-        public AccountService(IMapper mapper, CustomerService customerService) : base(mapper)
+        private TransactionService _transactionService;
+        public AccountService(IMapper mapper, CustomerService customerService, 
+                                                TransactionService transactionService) : base(mapper)
         {
             _reponse = new ResponseDto();
             _customerService = customerService;
-           // _transactionService = transactionService;
+            _transactionService = transactionService;
         }
 
         public ResponseDto RegisterUser(int customerId, decimal initialCredit)
@@ -39,33 +42,23 @@ namespace WebAPIServices.AccountComponent
                     _reponse.DisplayMessages = "Customer Account created successfully";
                     _reponse.Result = acDto;
             }
-            //else if (foundCustomerDto != null && initialCredit > 0)
-            //{
-            //    foundCustomerDto.InitialCredit = initialCredit;
-            //    //var responseDto = CheckUser(customerId);
-             
-            //        var accountDto = new AccountDto
-            //        {
+            else if (foundCustomerDto != null && initialCredit > 0)
+            {
+                foundCustomerDto.InitialCredit = initialCredit;
+                var accountDto = new AccountDto
+                {
+                    Customer = foundCustomerDto,
+                };
+                var transResponsedto = _transactionService.DoTransaction(accountDto);
+                 var createdAccountDto = this.CreateAccount((AccountDto)transResponsedto.Result);
+                
 
-            //            Customer = foundCustomerDto,
-            //        };
 
-            //        var acDto = this.CreateAccount(accountDto);
-            //        var transDto = new TransactionsDto
-            //        {
-            //            Account = acDto,
-            //            Amount = acDto.Customer.InitialCredit,
-            //            TransactionDate = DateTime.Now,
-            //            TransType = TransactionType.Credit
-
-            //        };
-            //        var response = _transactionService.DoTransaction(transDto);
-
-            //        _reponse.IsSuccess = response.IsSuccess;
-            //        _reponse.DisplayMessages = response.DisplayMessages;
-            //        _reponse.Result = response.Result;
-            //    }
-            //}
+                    _reponse.IsSuccess = transResponsedto.IsSuccess;
+                    _reponse.DisplayMessages = transResponsedto.DisplayMessages;
+                    _reponse.Result = createdAccountDto;
+         
+            }
             else
             {
                 _reponse.IsSuccess = false;
@@ -76,23 +69,19 @@ namespace WebAPIServices.AccountComponent
             return _reponse;
         }
 
-        //public ResponseDto FindAccountByCustomerID(int customerId)
-        //{
-        //    var foundCustomer = AccountDB.Find(a => a.Customer.CustomerId == customerId);
-        //    if (foundCustomer != null)
-        //    {
-        //        _reponse.IsSuccess = true;
-        //        _reponse.DisplayMessages = "Account found with customer id";
-        //        _reponse.Result = foundCustomer;
-        //    }
-        //    else
-        //    {
-        //        _reponse.IsSuccess = false;
-        //        _reponse.DisplayMessages = "Account not found";
 
-        //    }
+        public ResponseDto FindByCustomerID(int id)
+        {
+            var foundCustomer = AccountDB.Where(ac => ac.Customer.CustomerId == id);
+            if (foundCustomer != null)
+            {
+                var mappedAccountDto = _mapper.Map<List<AccountDto>>(foundCustomer);
+                _reponse.IsSuccess = true;
+                _reponse.DisplayMessages = "Found an account";
+                _reponse.Result = mappedAccountDto;
+            }
 
-        //    return _reponse;
-        //}
+            return _reponse;   
+        }
     }
 }
