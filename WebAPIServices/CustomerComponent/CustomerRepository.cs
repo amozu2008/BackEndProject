@@ -22,19 +22,24 @@ namespace WebAPIServices.CustomerComponent
         {
             _mapper = mapper;
         }
-        public CustomerDto AddCustomer(CustomerDto customerDto)
-        {
-            throw new NotImplementedException();
-        }
-
         public CustomerDto FindCustomerById(int id)
         {
-            throw new NotImplementedException();
+            var FoundCustomer = CustomerDB.Find(c => c.CustomerId == id);
+
+            return _mapper.Map<CustomerDto>(FoundCustomer);
         }
 
         public IEnumerable<CustomerDto> GetAllCustomer()
         {
-            throw new NotImplementedException();
+            var listOfCustomer = CustomerDB.ToList();
+            return _mapper.Map<List<CustomerDto>>(listOfCustomer);
+        }
+
+        public CustomerDto AddCustomer(CustomerDto customerDto)
+        {
+            var customer = _mapper.Map<CustomerDto, Customer>(customerDto);
+            CustomerDB.Add(customer);
+            return _mapper.Map<Customer, CustomerDto>(customer);
         }
     }
 }
