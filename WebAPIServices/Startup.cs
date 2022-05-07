@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPIServices.AccountComponent;
 using WebAPIServices.CustomerComponent;
 
 namespace WebAPIServices
@@ -39,6 +40,8 @@ namespace WebAPIServices
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<CustomerService>();
+            services.AddScoped<AccountService>();
+            //services.AddScoped<TransactionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
