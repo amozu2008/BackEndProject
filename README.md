@@ -21,7 +21,10 @@ and displays the customer information and their transactions.
 
 The third end point is https://localhost:44395/api/account. This end poind does a GET request, that return all customer.
 
+i used Azure devop for my build pipeline. https://dev.azure.com/amozudevorganization/BackEndProject/_build
+
 The project can be accessed from https://github.com/amozu2008/BackEndProject
+
 
 I used Visual Studio 2019 to build the app. Thanks!
 
