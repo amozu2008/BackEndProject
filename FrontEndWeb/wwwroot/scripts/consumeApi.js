@@ -18,9 +18,9 @@ createBtn.addEventListener("click", () => {
 
     }
     else {
-        customerObj = {
-            customerId = customerValue,
-            initialCredit = creditValue
+        const customerObj = {
+            customerId : customerValue,
+            initialCredit : creditValue
         }
         ConsumeHttp.registerUsers("https://localhost:44395/api/account", customerObj)
             .then(customerObj => console.log(customerObj))
