@@ -26,7 +26,21 @@ createBtn.addEventListener("click", () => {
             initialCredit : creditValue
         }
         ConsumeHttp.registerUsers("https://localhost:44395/api/account", customerObj)
-            .then(data => listData.innerHTML = data.displayMessages)
+            .then(data => {
+                                if (data.isSuccess) {
+
+                                    alertBox.innerHTML = data.displayMessages;
+                                    alertBox.classList.remove("alert-danger");
+                                    alertBox.classList.add("alert-success");
+                                    alertBox.classList.replace("d-none", "d-block");
+                                }
+                                else {
+                                    alertBox.innerHTML = data.displayMessages;
+                                    alertBox.classList.remove("alert-success");
+                                    alertBox.classList.add("alert-danger");
+                                    alertBox.classList.replace("d-none", "d-block");
+                                }
+                           })
             .catch(err => console.log(err));
     }
 
