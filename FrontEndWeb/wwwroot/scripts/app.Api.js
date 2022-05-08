@@ -55,7 +55,7 @@ findCustomerBtn.addEventListener("click", () => {
                                     <small>Transaction ${item.transactions}</small>
                             </a>`
                     });
-
+                    listData.innerHTML = outputData;
                 }
                 else {
                     alertBox.innerHTML = data.displayMessages;
@@ -64,7 +64,7 @@ findCustomerBtn.addEventListener("click", () => {
                     alertBox.classList.replace("d-none", "d-block");
                 }
                 
-                listData.innerHTML = outputData;
+                
 
             })
             .catch(err => console.log(err));
