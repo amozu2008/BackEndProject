@@ -26,7 +26,7 @@ createBtn.addEventListener("click", () => {
             initialCredit : creditValue
         }
         ConsumeHttp.registerUsers("https://localhost:44395/api/account", customerObj)
-            .then(data => listData.innerHTML = data)
+            .then(data => listData.innerHTML = data.displayMessages)
             .catch(err => console.log(err));
     }
 
