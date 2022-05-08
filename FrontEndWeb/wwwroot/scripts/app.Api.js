@@ -8,7 +8,6 @@ const alertBox = document.querySelector("#alertBoxId");
 
 
 allCustomerBtn.addEventListener("click", () => {
-    // alert("Hey")
     ConsumeHttp.getCustomer("https://localhost:44395/api/account")
         .then(data => {
             let outputData = "";
