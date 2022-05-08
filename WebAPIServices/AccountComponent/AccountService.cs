@@ -72,8 +72,8 @@ namespace WebAPIServices.AccountComponent
 
         public ResponseDto FindByCustomerID(int id)
         {
-            var foundCustomer = AccountDB.Where(ac => ac.Customer.CustomerId == id);
-            if (foundCustomer != null)
+            var foundCustomer = AccountDB.FindAll(ac => ac.Customer.CustomerId == id); //Where(ac => ac.Customer.CustomerId == id);
+            if (foundCustomer.Count != 0)
             {
                 var mappedAccountDto = _mapper.Map<List<AccountDto>>(foundCustomer);
                 _reponse.IsSuccess = true;

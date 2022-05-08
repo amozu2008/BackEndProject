@@ -43,6 +43,7 @@ findCustomerBtn.addEventListener("click", () => {
         listData.innerHTML = "";
         ConsumeHttp.getCustomer("https://localhost:44395/api/account/" + customerValue)
             .then(data => {
+               
                 if (data.isSuccess) {
                     let outputData = "";
                     data.result.forEach(item => {
@@ -58,6 +59,7 @@ findCustomerBtn.addEventListener("click", () => {
                     listData.innerHTML = outputData;
                 }
                 else {
+                    
                     alertBox.innerHTML = data.displayMessages;
                     alertBox.classList.remove("alert-success");
                     alertBox.classList.add("alert-danger");
