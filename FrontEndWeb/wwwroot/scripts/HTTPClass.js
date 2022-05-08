@@ -15,7 +15,7 @@
         return responseData;
     }
 
-    async getAllCustomer(url) {
+    async getCustomer(url) {
         const response = await fetch(url);
         const responseData = await response.json();
 
