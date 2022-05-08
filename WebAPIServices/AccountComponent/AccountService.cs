@@ -80,6 +80,11 @@ namespace WebAPIServices.AccountComponent
                 _reponse.DisplayMessages = "Found an account";
                 _reponse.Result = mappedAccountDto;
             }
+            else
+            {
+                _reponse.IsSuccess = false;
+                _reponse.DisplayMessages = "No account Found";
+            }
 
             return _reponse;   
         }
