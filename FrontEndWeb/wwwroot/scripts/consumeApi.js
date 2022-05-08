@@ -5,6 +5,7 @@ const initialCreditTxt = document.querySelector("#initialCreditTxt");
 const createBtn = document.querySelector("#btnid");
 const alertBox = document.querySelector("#alertBoxId");
 const listData = document.querySelector("#listDataId");
+const allCustomerBtn = document.querySelector("#allCustomerBtn");
 
 
 createBtn.addEventListener("click", () => {
@@ -33,6 +34,8 @@ createBtn.addEventListener("click", () => {
                                     alertBox.classList.remove("alert-danger");
                                     alertBox.classList.add("alert-success");
                                     alertBox.classList.replace("d-none", "d-block");
+                                    customerValue == "";
+                                    creditValue == ""
                                 }
                                 else {
                                     alertBox.innerHTML = data.displayMessages;
@@ -45,3 +48,22 @@ createBtn.addEventListener("click", () => {
     }
 
 });
+
+allCustomerBtn.addEventListener("click", () => {
+    ConsumeHttp.getAllCustomer("https://localhost:44395/api/account")
+        .then(data => {
+            let outputData = "";
+            data.forEach(post => {
+                outputData += `<a href="#" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">${data.customer.name} ${data.customer.surname}</h5>
+                                        <small>initialCredit ${data.customer.initialCredit}</small>
+                                    </div>
+                                    <p class="mb-1">Balance ${data.balance}</p>
+                                    <small>Transaction ${data.transactions}</small>
+                            </a>`
+            });
+            listData.innerHTML = outputData;
+
+        })
+})
