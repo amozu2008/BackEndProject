@@ -41,7 +41,8 @@ findCustomerBtn.addEventListener("click", () => {
     else {
         alertBox.classList.replace("d-block", "d-none");
         listData.innerHTML = "";
-        ConsumeHttp.getCustomer("https://localhost:44395/api/account?" + customerValue)
+        ConsumeHttp.getCustomer("https://localhost:44395/api/account/" + customerValue)
+        console.log("https://localhost:44395/api/account/" + customerValue);
             .then(data => {
                 let outputData = "";
                 data.forEach(item => {
