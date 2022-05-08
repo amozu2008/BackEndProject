@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<h1 class="text-center my-4">Customer Portal</h1>
+<div class="alert alert-danger col-6 mx-auto d-none" role="alert">
+    <strong>A simple message</strong>
+</div>
+<div class="card bg-light col-6 mx-auto">
+
+    <div class="card-body">
+
+        <div class="form-group">
+            <label for="customerIdTxt">Customer ID</label>
+            <input type="number" class="form-control" id="customerIdTxt" required>
+        </div>
+        <div class="form-group">
+            <label for="initialCreditTxt">Initial Credit</label>
+            <input type="number" class="form-control" id="initialCreditTxt" required>
+        </div>
+        <div class="form-group">
+            <button id="btnid" class="btn btn-success btn-block">Create</button>
+        </div>
+
+    </div>
+</div>
+
+<div id="listDataId" class="list-group my-4 col-8 mx-auto">
+    <a href="#" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading</h5>
+            <small>3 days ago</small>
+        </div>
+        <p class="mb-1">Some placeholder content in a paragraph.</p>
+        <small>And some small print.</small>
+    </a>
+</div>
+
