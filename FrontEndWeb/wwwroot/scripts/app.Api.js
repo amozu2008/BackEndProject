@@ -40,10 +40,11 @@ findCustomerBtn.addEventListener("click", () => {
     }
     else {
         alertBox.classList.replace("d-block", "d-none");
+        listData.innerHTML = "";
         ConsumeHttp.getCustomer("https://localhost:44395/api/account?" + customerValue)
             .then(data => {
                 let outputData = "";
-                data.result.forEach(item => {
+                data.forEach(item => {
                     outputData += `<a href="#" class="list-group-item list-group-item-action">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-1">${item.customer.name} ${item.customer.surname}</h5>

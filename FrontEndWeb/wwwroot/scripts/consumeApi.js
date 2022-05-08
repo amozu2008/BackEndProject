@@ -34,8 +34,8 @@ createBtn.addEventListener("click", () => {
                                     alertBox.classList.remove("alert-danger");
                                     alertBox.classList.add("alert-success");
                                     alertBox.classList.replace("d-none", "d-block");
-                                    customerValue.value = "";
-                                    creditValue.value = "";
+                                    customerTxt.value = "";
+                                    initialCreditTxt.value = "";
                                 }
                                 else {
                                     alertBox.innerHTML = data.displayMessages;
