@@ -43,9 +43,10 @@ findCustomerBtn.addEventListener("click", () => {
         listData.innerHTML = "";
         ConsumeHttp.getCustomer("https://localhost:44395/api/account/" + customerValue)
             .then(data => {
-                let outputData = "";
-                data.result.forEach(item => {
-                    outputData += `<a href="#" class="list-group-item list-group-item-action">
+                if (data.isSuccess) {
+                    let outputData = "";
+                    data.result.forEach(item => {
+                        outputData += `<a href="#" class="list-group-item list-group-item-action">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-1">${item.customer.name} ${item.customer.surname}</h5>
                                         <small>initialCredit ${item.customer.initialCredit}</small>
@@ -53,7 +54,16 @@ findCustomerBtn.addEventListener("click", () => {
                                     <p class="mb-1">Balance ${item.balance}</p>
                                     <small>Transaction ${item.transactions}</small>
                             </a>`
-                });
+                    });
+
+                }
+                else {
+                    alertBox.innerHTML = data.displayMessages;
+                    alertBox.classList.remove("alert-success");
+                    alertBox.classList.add("alert-danger");
+                    alertBox.classList.replace("d-none", "d-block");
+                }
+                
                 listData.innerHTML = outputData;
 
             })
