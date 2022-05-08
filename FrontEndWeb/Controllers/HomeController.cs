@@ -23,7 +23,11 @@ namespace FrontEndWeb.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Customer()
+        {
+            return View();
+        }
+        public IActionResult FindCustomer()
         {
             return View();
         }
