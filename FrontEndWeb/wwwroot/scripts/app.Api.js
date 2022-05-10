@@ -8,7 +8,7 @@ const alertBox = document.querySelector("#alertBoxId");
 
 
 allCustomerBtn.addEventListener("click", () => {
-    ConsumeHttp.getCustomer("https://localhost:44395/api/account")
+    ConsumeHttp.getCustomer("https://io.dotnotation.com.ng/api/account")
         .then(data => {
             let outputData = "";
             data.forEach(item => {
@@ -41,9 +41,8 @@ findCustomerBtn.addEventListener("click", () => {
     else {
         alertBox.classList.replace("d-block", "d-none");
         listData.innerHTML = "";
-        ConsumeHttp.getCustomer("https://localhost:44395/api/account/" + customerValue)
+        ConsumeHttp.getCustomer("https://io.dotnotation.com.ng/api/account" + customerValue)
             .then(data => {
-               
                 if (data.isSuccess) {
                     let outputData = "";
                     data.result.forEach(item => {
@@ -59,7 +58,6 @@ findCustomerBtn.addEventListener("click", () => {
                     listData.innerHTML = outputData;
                 }
                 else {
-                    
                     alertBox.innerHTML = data.displayMessages;
                     alertBox.classList.remove("alert-success");
                     alertBox.classList.add("alert-danger");
