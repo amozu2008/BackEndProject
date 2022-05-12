@@ -42,7 +42,7 @@ namespace WebAPIServices.AccountComponent
                     _reponse.DisplayMessages = "Customer Account created successfully";
                     _reponse.Result = acDto;
             }
-            else if (foundCustomerDto != null && initialCredit > 0)
+            else if (foundCustomerDto != null && initialCredit != 0)
             {
                 foundCustomerDto.InitialCredit = initialCredit;
                 var accountDto = new AccountDto
@@ -52,13 +52,11 @@ namespace WebAPIServices.AccountComponent
                 var transResponsedto = _transactionService.DoTransaction(accountDto);
                  var createdAccountDto = this.CreateAccount((AccountDto)transResponsedto.Result);
                 
-
-
                     _reponse.IsSuccess = transResponsedto.IsSuccess;
                     _reponse.DisplayMessages = transResponsedto.DisplayMessages;
                     _reponse.Result = createdAccountDto;
          
-            }
+            }         
             else
             {
                 _reponse.IsSuccess = false;
