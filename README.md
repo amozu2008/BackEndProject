@@ -10,16 +10,16 @@ Another url https://localhost:44309/Home/Customer takes you to another web page,
 Please note i only have three existing customers with ID of 1,2 and 3. only these customer can open an account.
 I used a List api as my data collection.
 
-I am still in my development ENV. My Back end Web API local server url is https://localhost:44395.
+I am still in my development ENV. My Back end Web API local server url is https://localhost:44395. However i have changed my backend server to https://io.dotnotation.com.ng/api/account. Kindly check it out.
 
-https://localhost:44395/api/account This end point does a POST request which accept two parameters customerid and initialCredit.
+https://io.dotnotation.com.ng/api/account This end point does a POST request which accept two parameters customerid and initialCredit.
 The endpoint creates a new account for a specific customer id and also creates a transaction on the newly created account if initial credit is more than zero.
 But if the initial creadit is zero no transaction is created for that user.
 
-The second end point is https://localhost:44395/api/account/{customerid}. This end point does a "GET" request which accept a customer id
+The second end point is https://io.dotnotation.com.ng/api/account/{customerid}. This end point does a "GET" request which accept a customer id
 and displays the customer information and their transactions.
 
-The third end point is https://localhost:44395/api/account. This end poind does a GET request, that return all customer.
+The third end point is https://io.dotnotation.com.ng/api/account. This end poind does a GET request, that return all customer.
 
 i used Azure devop for my build pipeline. https://dev.azure.com/amozudevorganization/BackEndProject/_build
 
