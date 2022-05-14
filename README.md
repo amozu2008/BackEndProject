@@ -3,10 +3,10 @@ The Objective of the BackEnd API Assignment is to expose three endpoint that wil
 view all account and view account for a specific user or customer.
 
 The application has two layers. BackEnd layer and Front Web layer. The front web layer talks to the Backend WebAPI layer.
-Front Web layer uses Java Script Fetch API to assess the end points. this layer uses a seperate server. The url https://localhost:44309
+Front Web layer uses Java Script Fetch API to assess the end points. this layer uses a seperate server. The url https://staging/dotnotation.com.ng
 takes you to the home page. This home page consist of a form that takes customer id and initial credit.
 
-Another url https://localhost:44309/Home/Customer takes you to another web page, where we can search for all customers and customer by their ID.
+Another url https://staging/dotnotation.com.ng/customer.html takes you to another web page, where we can search for all customers and customer by their ID.
 Please note i only have three existing customers with ID of 1,2 and 3. only these customer can open an account.
 I used a List api as my data collection.
 
