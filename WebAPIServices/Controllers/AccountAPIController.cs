@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,6 +13,7 @@ namespace WebAPIServices.Controllers
 {
     [Route("api/account")]
     [ApiController]
+    //[Authorize]
     public class AccountAPIController : ControllerBase
     {
         private AccountService _service;
