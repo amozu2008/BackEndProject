@@ -26,7 +26,9 @@ createBtn.addEventListener("click", () => {
             customerId : customerValue,
             initialCredit : creditValue
         }
-        ConsumeHttp.registerUsers("https://io.dotnotation.com.ng/api/account", customerObj)
+        ConsumeHttp.registerUsers("https://backenddotnotation.azurewebsites.net/api/account", customerObj)
+       /* ConsumeHttp.registerUsers("https://io.dotnotation.com.ng/api/account", customerObj) */
+       /* ConsumeHttp.registerUsers("https://localhost:44395/api/account", customerObj)*/
             .then(data => {
                                 if (data.isSuccess) {
 
