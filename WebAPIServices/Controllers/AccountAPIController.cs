@@ -13,7 +13,6 @@ namespace WebAPIServices.Controllers
 {
     [Route("api/account")]
     [ApiController]
-    //[Authorize]
     public class AccountAPIController : ControllerBase
     {
         private AccountService _service;
