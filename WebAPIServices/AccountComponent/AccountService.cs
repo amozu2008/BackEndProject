@@ -12,18 +12,18 @@ namespace WebAPIServices.AccountComponent
 {
     public class AccountService : AccountRepository
     {
-        private ResponseDto _reponse;
+        private ResponseDto<object> _reponse;
         private CustomerService _customerService;
         private TransactionService _transactionService;
         public AccountService(IMapper mapper, CustomerService customerService, 
                                                 TransactionService transactionService) : base(mapper)
         {
-            _reponse = new ResponseDto();
+            _reponse = new ResponseDto<object>();
             _customerService = customerService;
             _transactionService = transactionService;
         }
 
-        public ResponseDto RegisterUser(int customerId, decimal initialCredit)
+        public ResponseDto<object> RegisterUser(int customerId, decimal initialCredit)
         {
             var foundCustomerDto = _customerService.FindCustomerById(customerId);
 
@@ -68,7 +68,7 @@ namespace WebAPIServices.AccountComponent
         }
 
 
-        public ResponseDto FindByCustomerID(int id)
+        public ResponseDto<object> FindByCustomerID(int id)
         {
             var foundCustomer = AccountDB.FindAll(ac => ac.Customer.CustomerId == id); //Where(ac => ac.Customer.CustomerId == id);
             if (foundCustomer.Count != 0)

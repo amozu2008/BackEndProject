@@ -40,8 +40,14 @@ namespace WebAPIServices.Controllers
         [HttpGet]
         public IActionResult GetAccount()
         {
-            var allAcct = _service.GetAllAccount();
-            return Ok(allAcct);
+            // var allAcct = _service.GetAllAccount();
+            var responseDto = new ResponseDto<IEnumerable<AccountDto>>
+            {
+                DisplayMessages = "Successfull",
+                IsSuccess = true,
+                Result = _service.GetAllAccount()
+            };
+            return Ok(responseDto);
         }
 
 

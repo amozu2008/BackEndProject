@@ -10,13 +10,13 @@ namespace WebAPIServices.TransactionComponent
 {
     public class TransactionService
     {
-        private ResponseDto _reponse;
+        private ResponseDto<object> _reponse;
         public TransactionService()
         {
-            _reponse = new ResponseDto();
+            _reponse = new ResponseDto<object>();
         }
 
-        public ResponseDto DoTransaction(AccountDto accountDto)
+        public ResponseDto<object> DoTransaction(AccountDto accountDto)
         {
             //var foundAccountDto = _accountService.FindAccountById(id);
             if(accountDto != null && accountDto.Customer.InitialCredit > 0)

@@ -8,11 +8,14 @@ const alertBox = document.querySelector("#alertBoxId");
 
 
 allCustomerBtn.addEventListener("click", () => {
-    ConsumeHttp.getCustomer("https://io.dotnotation.com.ng/api/account")
+    ConsumeHttp.getCustomer("https://backenddotnotation.azurewebsites.net/api/account")
+    /*ConsumeHttp.getCustomer("https://io.dotnotation.com.ng/api/account")*/ 
+  /*  ConsumeHttp.getCustomer("https://localhost:44395/api/account")*/
         .then(data => {
-            let outputData = "";
-            data.forEach(item => {
-                outputData += `<a href="#" class="list-group-item list-group-item-action">
+            if (data.isSuccess) {
+                let outputData = "";
+                data.result.forEach(item => {
+                    outputData += `<a href="#" class="list-group-item list-group-item-action">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-1">${item.customer.name} ${item.customer.surname}</h5>
                                         <small>initialCredit ${item.customer.initialCredit}</small>
@@ -20,8 +23,17 @@ allCustomerBtn.addEventListener("click", () => {
                                     <p class="mb-1">Balance ${item.balance}</p>
                                     <small>Transaction ${item.transactions}</small>
                             </a>`
-            });
-            listData.innerHTML = outputData;
+                });
+                listData.innerHTML = outputData;
+            }
+            else {
+                alertBox.innerHTML = "Something went wrong";
+                alertBox.classList.remove("alert-success");
+                alertBox.classList.add("alert-danger");
+                alertBox.classList.replace("d-none", "d-block");
+            }
+
+
 
         })
         .catch(err => console.log(err));
@@ -41,7 +53,9 @@ findCustomerBtn.addEventListener("click", () => {
     else {
         alertBox.classList.replace("d-block", "d-none");
         listData.innerHTML = "";
-        ConsumeHttp.getCustomer("https://io.dotnotation.com.ng/api/account/" + customerValue)
+        ConsumeHttp.getCustomer("https://backenddotnotation.azurewebsites.net/api/account/" + customerValue)
+        /*ConsumeHttp.getCustomer("https://io.dotnotation.com.ng/api/account/" + customerValue)*/
+        /*ConsumeHttp.getCustomer("https://localhost:44395/api/account/" + customerValue)*/
             .then(data => {
                 if (data.isSuccess) {
                     let outputData = "";
