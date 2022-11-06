@@ -3,28 +3,22 @@ The Objective of the BackEnd API Assignment is to expose three endpoint that wil
 view all account and view account for a specific user or customer.
 
 The application has two layers. BackEnd layer and Front Web layer. The front web layer talks to the Backend WebAPI layer.
-Front Web layer uses Java Script Fetch API to assess the end points. this layer uses a seperate server. The url https://staging/dotnotation.com.ng
-takes you to the home page. This home page consist of a form that takes customer id and initial credit.
+Front Web layer uses Java Script Fetch API to assess the end points. This layer uses a seperate server. The url https://staging/dotnotation.com.ng or https://frontenddotnotation.azurewebsites.net takes you to the home page. This home page consist of a form that takes customer id and initial credit.
 
-Another url https://staging/dotnotation.com.ng/customer.html takes you to another web page, where we can search for all customers and customer by their ID.
-Please note i only have three existing customers with ID of 1,2 and 3. only these customer can open an account.
-I used a List api as my data collection.
+Another url https://staging/dotnotation.com.ng/customer.html or https://frontenddotnotation.azurewebsites.net/customer.html takes you to another web page, where we can search for all customers and customer by their ID. Please note i only have three existing customers with ID of 1,2 and 3. only these customer can open an account. I used a List api as my data collection.
 
-I am still in my development ENV. My Back end Web API local server url is https://localhost:44395. However i have changed my backend server to https://io.dotnotation.com.ng/api/account. Kindly check it out.
+I am still in my development ENV. My Back end Web API local server url is https://localhost:44395. However i have changed my backend server to https://io.dotnotation.com.ng/api/account or https://backenddotnotation.azurewebsites.net/api/account. Kindly check it out.
 
-https://io.dotnotation.com.ng/api/account This end point does a POST request which accept two parameters customerid and initialCredit.
-The endpoint creates a new account for a specific customer id and also creates a transaction on the newly created account if initial credit is more than zero.
-But if the initial creadit is zero no transaction is created for that user.
+https://io.dotnotation.com.ng/api/account or https://backenddotnotation.azurewebsites.net/api/account This end point does a POST request which accept two parameters customerid and initialCredit.
 
-The second end point is https://io.dotnotation.com.ng/api/account/{customerid}. This end point does a "GET" request which accept a customer id
-and displays the customer information and their transactions.
+The endpoint creates a new account for a specific customer id and also creates a transaction on the newly created account if initial credit is more than zero. But if the initial creadit is zero no transaction is created for that user.
 
-The third end point is https://io.dotnotation.com.ng/api/account. This end poind does a GET request, that return all customer.
+The second end point is https://io.dotnotation.com.ng/api/account/{customerid} or https://backenddotnotation.azurewebsites.net/api/account/{customerid}. This end point does a "GET" request which accept a customer id and displays the customer information and their transactions.
+
+The third end point is https://io.dotnotation.com.ng/api/account or https://backenddotnotation.azurewebsites.net/api/account. This end poind does a GET request, that return all customer.
 
 i used Azure devop for my build pipeline. https://dev.azure.com/amozudevorganization/BackEndProject/_build
-
 The project can be accessed from https://github.com/amozu2008/BackEndProject
-
 
 I used Visual Studio 2019 to build the app. Thanks!
 
